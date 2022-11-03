@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-c@(h!q7q%5@2^!^*ucs!7d2-w7!dwyo(@5v1_%9s(f^yt*-$55'
+SECRET_KEY = 'django-insecure-nxu!1+4blyym@-^_w84a#!qunqe57t31#ssrzbb#b$gc=q3%b9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,7 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'music_app'
+
+    # 3rd party apps
+    'rest_framework',
+
+    #local apps
+    'musicapp',
+    'api.apps.ApiConfig'
 ]
 
 MIDDLEWARE = [
@@ -122,3 +128,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES":(
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.TokenAuthentication"    
+    )
+}
+
